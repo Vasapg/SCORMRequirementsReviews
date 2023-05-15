@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <title>Software Requirements Specification ACME microwave oven ABC model</title>
+    <text>
+        1. Introduction 
+        1.1. Purpose: This SRS describes the detailed requirements for the ABC model of the ACME microwave oven. This document has been submitted to Configuration Control and assigned 1.0 Version number. It is valid for all purposes, namely: Design, system testing and project management.
+        
+        1.2. Scope: The ABC model is the simplest and cheapest microware oven in the product family. This appliance only performs the basic functions: heating and defrost. It does not contain a grill or a programming unit as in other models. The cavity magnetron hardware is ACME standard, as well as the motherboard. ABC model is designed for the US market.
+        
+        1.3. Definitions, acronyms, and abbreviations
+       
+        1.4. References: ACME motherboard interfaces are available at somewhere….
+        
+        1.5. Overview
+        
+        2. Overall description
+        
+        2.1. Product perspective: ABC model has the same external appearance of the ACME’s microwave oven family: It is composed of an external metal case and a semi-transparent door. The door is equipped with sensors to detect whether it is open or close. The user controls are located in the top-right corner. There is an internal 12W light and a speaker.
+        
+        2.2. User functions: The user may perform just 2 different operations: (1) heating and (2) defrosting.Besides those basic operations, the user may also cancel the current operation.
+        
+        2.3. User characteristics: ABC model is designed for everyday use by all types of people. Therefore, the power control has been replaced by food icons and the time selector has been replaced by a weight selector. Microwave operation shall be described by voice messages.
+        
+        2.4. Constraints: To prevent injuries, heating and defrosting cannot start until the door has been closed. Likewise, the light shall be turned on during operation.
+        
+        2.5. Assumptions and dependencies
+        
+        2.6. Apportioning
+        
+        3. Specific requirements
+        
+        3.1. Functional requirements
+        
+        3.1.1. The system shall heat food according to the food type and weight specified in the user control panel. A voice message will be emitted before heating starts and after it finishes.
+        
+        3.1.2. The system shall defrost food according to the food type and weight specified in the user control panel. A voice message will be emitted before defrosting starts and after it finishes.
+        
+        3.1.3. The system shall allow the user to cancel heating and defrosting. A voice message will be emitted when cancelling succeeds.
+    </text>
+    <Global> Este ejercicio es un ejemplo </Global>
+    <defect type="Ambiguity" weight="2" comment="Esta opcion es ambigua">This appliance only performs the basic functions: heating and defrost.</defect>
+    <defect type="Understability" weight="5" comment="No se entiende">The door is equipped with sensors to detect whether it is open or close.</defect>
+    <defect type="Completeness" weight="3" comment="No esta completo">ABC model is designed for everyday use by all types of people.</defect>    
+    <defect type="Realism" weight="7" comment="Esto no es realista">The system shall heat food according to the food type and weight specified in the user control panel.</defect>    
+</document>

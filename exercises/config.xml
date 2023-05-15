@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <numExercises>2</numExercises>
+    <exercise id="1">
+        <title>Software Requirements Specification: ACME elevator FAMILY model</title>
+        <url>https://raw.githubusercontent.com/Vasapg/PIE-SCORM/main/Self-Assesment-4/exercises/ERS-elevator.xml</url>
+    </exercise>
+    <exercise id="1">
+        <title>Software Requirements Specification ACME microwave oven ABC model</title>
+        <url>https://raw.githubusercontent.com/Vasapg/PIE-SCORM/main/Self-Assesment-4/exercises/ERS-microwave.xml</url>
+    </exercise>
+</document>

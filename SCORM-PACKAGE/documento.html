@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang ="es">
+<head>
+    <title>Requirements specification</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"  crossorigin="anonymous"></script>
+</head>
+<body>
+<!--This div helps to organize the html page as grids, which can scale out with the given space in the page-->
+<div class="wrapper">
+<!--Document that is presented to the user-->
+  <div id="documentoXML" class="documentoXML"></div>
+<!--This div will help me to organize all buttons at the rigth side of the page-->
+  <div class="botonesError">
+    <table>
+      <tr>
+        <td><input type="button" class="ver" id="Select Error" value="Select error" onclick="abrirPopup('TiposDeError');" 
+          style="width: 250px; height:40px; text-align:center;">
+        </td>
+      </tr>
+      <tr>
+        <td><input type="button" value="End review and see solution" onclick="abrirPopup('estasseguro');" 
+          style='width: 250px; height:40px; text-align:center;'></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="popupError" id="TiposDeError">
+  <div class="errores">
+    <div class="cerrar" id="cerrar">
+      <svg onclick="cerrarPopup3('TiposDeError');" class="bi bi-x-circle" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
+          <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+          <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+      </svg>
+  </div>
+    <table class="table">
+      <tr>
+       <td>
+           <button  type="button" id="Understability" name="Understability" value="Understability" 
+           style='width: 112px; height:50px' onclick="gestionDeTipo(name);" disabled>Understability</button>
+        </td>                             
+       <td>
+         <button  type="button" id="Redundancy" name="Redundancy" value="Redundancy" 
+         style='width: 112px; height:50px' onclick="gestionDeTipo(name);" disabled>Redundancy</button>
+       </td>                
+       <td>
+         <button  type="button" id="Completeness" name="Completeness" value="Completeness" 
+         style='width: 112px; height:50px' onclick="gestionDeTipo(name);" disabled>Completeness</button>
+        </td>                
+      </tr>
+      <tr>
+       <td>
+         <button  type="button" id="Ambiguity" name="Ambiguity" value="Ambiguity" 
+         style='width: 112px; height:50px' onclick="gestionDeTipo(name);" disabled>Ambiguity</button>
+       </td>                
+       <td>
+         <button  type="button" id="Consistency" name="Consistency" value="Consistency" 
+          style='width: 112px; height:50px' onclick="gestionDeTipo(name);" disabled>Consistency</button>
+       </td>                
+       <td>
+         <button  type="button" id="Organisation" name="Organisation" value="Organisation" 
+          style='width: 112px; height:50px' onclick="gestionDeTipo(name);" disabled>Organisation</button>
+       </td>                
+     </tr>
+     <tr>
+       <td>
+          <button  type="button" id="Traceability" name="Traceability" value="Traceability" 
+          style='width: 112px; height:50px' onclick="gestionDeTipo(name);" disabled>Traceability</button>
+        </td>                                
+       <td>
+         <button  type="button" id="Testability" name="Testability" value="Testability" 
+          style='width: 112px; height:50px' onclick="gestionDeTipo(name);" disabled>Testability</button>
+       </td>               
+       <td>
+         <button  type="button" id="Realism" name="Realism" value="Realism" 
+          style='width: 112px; height:50px' onclick="gestionDeTipo(name);" disabled>Realism</button>
+       </td>                
+     </tr>
+   </table>
+  </div>
+</div>
+
+
+<div class="popup" id="estasseguro">
+  <center>
+    <big>Are you sure? This review will be marked as <b>&ldquo;complete&rdquo;</b> and you will <b>not be able</b> to retake it</big>
+  </center>
+  <br>
+  <br>
+  <br>
+  <input type="button" value="Yes" onclick="sigPagina();" class="siestoyseguro" style='width: 150px; height:40px'>
+  <input type="button" value="No" onclick="cerrarPopup3('estasseguro');" class="noestoyseguro" style='width: 150px; height:40px'>
+</div>
+<!--
+<div class="popup" id="t_errores">
+    <div class="cerrar" id="cerrar">
+        <svg onclick="cerrarPopup();" class="bi bi-x-circle" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
+            <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+            <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+        </svg>
+    </div>
+    <center>
+      <div class="display_table_error", id="quitar_boton">
+      </div>
+    </center>
+    <center>
+      <input type="button" value="Display Error Table" onclick="tablaErrores();" class="display_table_error" id="quitar_boton">
+    </center>
+    <center>
+      <input type="button" value="Delete this error" onclick="abrirPopup('estasseguro2');" class="delete_error" id="delete_error" style='width: 150px; height:40px'>
+    </center>   
+</div>
+-->
+
+<!--help popup for user -->
+<div class="popup" id="helpBottom">
+  <div class="cerrar" id="cerrar">
+      <svg onclick="cerrarPopup3('helpBottom');" class="bi-x-circle bi"
+      width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"  xmlns="http://www.w3.org/2000/svg">;
+      <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
+      <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+      <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+    </svg>
+</div>
+<div style="margin-top:5%;">
+  <li>Select errors: here you may relate the selected text with an error, remember not to select errors between paragraphs</li>
+  <li>View errors: here you can see all the errors you have selected and delete those ones you would like to delete</li>
+  <li>End review and see solution: once you have finished, click this option to display your solution along side the corrected document</li>
+  <li>Erros can not be along two differents paragraphs</li>
+</div>
+</div>
+
+<div class="popup" id="helpTopRight">
+  <div class="cerrar" id="cerrar">
+      <svg onclick="cerrarPopup3('helpTopRight');" class="bi-x-circle bi"
+      width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"  xmlns="http://www.w3.org/2000/svg">;
+      <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
+      <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+      <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+    </svg>
+</div>
+  Here you will be able to relaste the selected text with the type of error, once selected it will be add to the error table.
+  <img src="img/SelectType.png" alt="Select type" style="width: 100%;">
+</div>
+
+<div class="popup" id="estasseguro2">
+  <center>
+    <big>Are you sure you want to delete this error from the table?</big>
+  </center>
+  <br>
+  <br>
+  <br>
+  <input type="button" value="Yes" onclick="eliminarError();" class="siestoyseguro" style='width: 150px; height:40px'>
+  <input type="button" value="No" onclick="cerrarPopup3('estasseguro2');" class="noestoyseguro" style='width: 150px; height:40px'>
+</div>
+
+<div class="popup" id="estasseguro3">
+  <center>
+    <big>Are you sure you want to restart the document? this will delete all errors selected</big>
+  </center>
+  <br>
+  <br>
+  <br>
+  <input type="button" value="Yes" onclick="reiniciarDocumento()" class="siestoyseguro" style='width: 150px; height:40px'>
+  <input type="button" value="No" onclick="cerrarPopup3('estasseguro3');" class="noestoyseguro" style='width: 150px; height:40px'>
+</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" crossorigin="anonymous"></script>
+<script>
+  window.addEventListener('load', function() {
+    // aquí puedes utilizar la función marked
+    console.log(marked.parse('# Hello, world!'));
+  });
+</script>
+<script type="text/javascript" src="js/guardarErrores.js"></script>
+<script type="text/javascript" src="js/abrirDocumento.js"></script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Problem statement</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>        
+        <meta charset="utf-8">
+        </head>    
+    <body>
+        <div class="inicio">                        
+            <div id="documents">
+                <center>
+                    <h4>This assignment aims to exercise your ability to identify quality problems (in general, defects) in requirements specifications</h4>
+                    <hr>
+                    <h3>Instructions</h3>
+                    <ol>
+                    	<li>
+                            <div>In this exercices you will have to select with the cursor a phrase of the text which you consider wrong</div>
+                            <div><img src="img/selectText.png" alt="Select text" class="bigimg"></div>
+                            <br>
+                        </li>
+                        <li>Once a portion of the text is select, you will be able to click on "select error", to relate that error to a type
+                             <br>
+                             <br>
+                             <img src="img/SelectType.png" alt="Select type" class="bigimg">
+                             <br>
+                            </li>
+                        <li>Every time a error is selected, it will be marked on the text, 
+                            then you might delted it if you no longer considered rigth by clicking on it
+                        </li>
+                        <li>When you are done selecting the errors, you will be able to see the document you made by selecting the errors
+                            along side the answer, every error in the answer have a brief explanation which you can se by clicking in the bubble.
+                            <br>
+                            <br>
+                        </li>
+                    </ol>
+                    <hr>
+                </center>
+            </div>
+            <center>
+                <input type="button" id="startExe" class="startExe" value="Start Excersise" onclick="location='documento.html'" style='width: 200px; height:40px; margin-bottom: 100 px;'/>
+            </center>            
+        </div>
+    </body>
+    
+    <script type="text/javascript">
+    //LocalStorage corresponde a la libería jQuery, que permite realizar una BBDD, aqui esta se limpia por completo
+    localStorage.clear();
+    
+    //comprobarXHTTP comprueba si se puede crear un objeto XMLHttpRequest, en caso de ser asi, se crea, en caso de no poder
+    // ser creado, se creara uno de tipo ActiveXObject
+    function comprobarXHTTP(){
+        var xhttp;
+        if(window.XMLHttpRequest){
+            xhttp = new XMLHttpRequest();
+        }
+        else{
+            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return xhttp;
+    }
+    
+    //Le dice a la ventada que todos los documentos han sido cargados?¿
+    window.onload = cogerDocs();
+    
+    </script>
+    
+</html>

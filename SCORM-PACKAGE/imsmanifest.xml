@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This is a Reload version 2.5.6 SCORM 1.2 Content Package document-->
+<!--Spawned from the Reload Content Package Generator - http://www.reload.ac.uk-->
+<manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" identifier="MANIFEST-18E981826A421D32FA223B38E096BF9B" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <!--this organization is vital for the project, but cannot be shown to the user, therefore all visibility is on false-->
+  <organizations default="ORG-C582872441E86BE48BB71F2CE24AA21F" isvisible="false">
+    <organization identifier="ORG-C582872441E86BE48BB71F2CE24AA21F" structure="hierarchical" isvisible="false">
+      <title>Requirements reviews</title>
+      <item identifier="ITEM-14B32A3FECCE187BAEE3C6D230E74D77" identifierref="RES-16E221AAC288333AE497B870070FDEF1" isvisible="false">
+        <title>Start</title>
+      </item>
+      <item identifier="ITEM-17DBC793E452777E33D4F4A90515EA85" identifierref="RES-F7E742879C540318373042027FC40CB2" isvisible="false">
+        <title>Specification</title>
+      </item>
+      <item identifier="ITEM-78ECF27990A272FF6DB0036413B821CE" identifierref="RES-8445F5F660B63C409137DECE853398E4" isvisible="false">
+        <title>Compare solutions</title>
+      </item>
+      <item identifier="ITEM-92A01B76628991270B458B0D85F6B1E8" identifierref="RES-55B800CE17C51625274598E458112B93" isvisible="false">
+        <title>Grade</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="RES-16E221AAC288333AE497B870070FDEF1" type="webcontent" href="inicio.html" adlcp:scormtype="asset">
+      <file href="inicio.html" />
+      <file href="css/main.css" />
+      <file href="documento.html" />
+      <file href="js/abrirDocumento.js" />
+      <file href="js/guardarErrores.js" />
+      <file href="img/ErrorTable.png"/>
+      <file href="img/selectText.png"/>
+      <file href="img/DisplayErrorTable.png"/>
+      <file href="img/SelectType.png"/>
+    </resource>
+    <resource identifier="RES-F7E742879C540318373042027FC40CB2" type="webcontent" href="documento.html" adlcp:scormtype="asset">
+      <file href="documento.html" />
+      <file href="css/main.css" />
+      <file href="js/abrirDocumento.js" />
+      <file href="js/guardarErrores.js" />
+    </resource>
+    <resource identifier="RES-8445F5F660B63C409137DECE853398E4" type="webcontent" href="compSoluciones.html" adlcp:scormtype="asset">
+      <file href="compSoluciones.html" />
+      <file href="calificacion.html" />
+      <file href="css/main.css" />
+      <file href="js/gestionCalificaciones.js" />
+      <file href="js/verSolucion.js" />
+    </resource>
+    <resource identifier="RES-55B800CE17C51625274598E458112B93" type="webcontent" href="calificacion.html" adlcp:scormtype="sco">
+      <file href="calificacion.html" />
+      <file href="css/main.css" />
+      <file href="js/gestionCalificaciones.js" />
+    </resource>
+  </resources>
+</manifest>
+

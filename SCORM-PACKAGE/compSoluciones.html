@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Check solution</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>        
+        <meta charset="utf-8">
+    </head> 
+    <hr>   
+    <body>
+        <div class="wrapperComp">
+            <div style="text-align: center;">
+                <h2><u>Your document:</u></h2>
+            </div>
+            <div style="text-align: center;">
+                <h2><u>Solution:</u></h2>
+            </div>
+            <div id="solucionAlumno" class="documentoXMLComp"></div>
+            <div id="solucionCorrecta" class="documentoXMLComp"></div> 
+        </div>
+        <div style="text-align: center;">
+            you may click in the solution errors to see a brief explanation
+        </div>
+        <br>
+        <div id="Comentarios" style="text-align: center;">
+            <input type="button" value="See solution Comments" onclick="displayComment();" style='width: 500px; height:40px; margin-top: 5px;'>
+            <input type="button" value="See document grade" onclick="location='calificacion.html'" style='width: 500px; height:40px; margin-top: 5px;'>
+        </div>    
+        <div id="sig_pagina" style="text-align: center;">
+
+        </div>    
+    </body>
+    <script type="text/javascript" src="js/verSolucion.js"></script>
+    <script type="text/javascript">
+    
+    window.location.hash = "no-back-button";
+    window.location.hash = "Again-No-back-button";
+    window.onhashchange=function(){window.location.hash="no-back-button";}
+
+    var titulo = localStorage.getItem("titulo");
+    var texto = localStorage.getItem("texto");
+    var texto_errores = localStorage.getItem("texto_errores");
+    texto_errores = JSON.parse(texto_errores);
+    var tipos_errores = localStorage.getItem("tipos_errores");
+    tipos_errores = JSON.parse(tipos_errores);
+    var pesos_errores = localStorage.getItem("pesos_errores");
+    pesos_errores = JSON.parse(pesos_errores);
+    var comments = JSON.parse(localStorage.getItem("comments"));
+    var id1 = "solucionCorrecta";
+
+    console.log(comments);
+    window.onload = verSolucionXML(titulo,texto,texto_errores,tipos_errores,id1,comments);
+
+    var id2 = "solucionAlumno";
+    
+    var text_originales = localStorage.getItem("texto_errores");
+    text_originales = JSON.parse(text_originales);
+    var tipos_originales = localStorage.getItem("tipos_errores");
+    tipos_originales = JSON.parse(tipos_originales);
+    var text_alumno = localStorage.getItem("oraciones");
+    text_alumno = JSON.parse(text_alumno);
+    var tipos_alumno = localStorage.getItem("tipoDeError");
+    tipos_alumno = JSON.parse(tipos_alumno);
+
+    window.onload = verSolucionAlumno(titulo, texto, text_originales, tipos_originales, text_alumno, tipos_alumno, id2);
+    
+    </script>
+</html>

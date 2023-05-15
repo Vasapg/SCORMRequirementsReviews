@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Grading</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>        
+        <meta charset="utf-8">
+    </head> 
+    <hr>   
+    <body>
+    <div class="wrapperFinal">
+        <center>
+        <div id="tablaCalificaciones" class="tablaCalificaciones">
+            <style type="text/css">
+               .tg  {border-collapse:collapse;border-spacing:0; text-align: center;}
+               .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                  overflow:hidden;padding:10px 5px;word-break:normal; text-align: center;}
+                .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal; text-align: center;}
+                .tg .tg-xgsn{border-color:inherit;font-size:100%;font-style:italic;font-weight:bold;text-align:center;vertical-align:top}
+                .tg .tg-4erg{border-color:inherit;font-style:italic;font-weight:bold;text-align:center;vertical-align:top}
+                .tg .tg-0lax{text-align:center;vertical-align:top}                
+            </style>
+        </div>
+        </center>
+        <div id="finalizar">
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <input type="button" id="endButton" class="volver" value="End activity" onclick="finalizarActividad()" style="width: 375px; height:40px; display: none;">
+        </div>
+        <div id="otro_documento">
+        </div>
+    </div>
+    </body>
+    <script type="text/javascript" src="js/gestionCalificaciones.js"></script>
+    <script type="text/javascript">
+    
+    var text_originales = localStorage.getItem("texto_errores");
+    text_originales = JSON.parse(text_originales);
+    var tipos_originales = localStorage.getItem("tipos_errores");
+    tipos_originales = JSON.parse(tipos_originales);
+    var pesos_originales = localStorage.getItem("pesos_errores");
+    pesos_originales = JSON.parse(pesos_originales);
+    var text_alumno = localStorage.getItem("oraciones");
+    text_alumno = JSON.parse(text_alumno);
+    var tipos_alumno = localStorage.getItem("tipoDeError");
+    tipos_alumno = JSON.parse(tipos_alumno);
+
+    window.onload = calcularNota(text_originales,tipos_originales,pesos_originales,text_alumno,tipos_alumno);
+
+    if(!localStorage.getItem("documentosRealizados")){
+        var documentosRealizados = [];
+        documentosRealizados.push(localStorage.getItem("seleccion"));
+        localStorage.setItem("documentosRealizados",JSON.stringify(documentosRealizados));
+    }
+    else{
+        var documentosRealizados = localStorage.getItem("documentosRealizados");
+        documentosRealizados = JSON.parse(documentosRealizados);
+        documentosRealizados.push(localStorage.getItem("seleccion"));
+        localStorage.setItem("documentosRealizados",JSON.stringify(documentosRealizados));
+    }    
+
+    if(parseInt(localStorage.getItem("nEjercicio")) == parseInt(localStorage.getItem("maxEjercicio"))){
+        var tabla = document.getElementById("tabla");
+        var fila = document.createElement("tr");
+        var notaFinal = document.createElement("th");
+        var notaFinal2 = document.createTextNode("Final grade");
+        notaFinal.appendChild(notaFinal2); 
+        var nota = document.createElement("th");
+        var nota2 = document.createTextNode(suma(stringToInt(JSON.parse(localStorage.getItem("notasAlumno"))))  + "/" + suma(stringToInt(JSON.parse(localStorage.getItem("notasDocumentos")))));
+        nota.appendChild(nota2);
+        fila.appendChild(notaFinal);
+        fila.appendChild(nota);
+        tabla.appendChild(fila);
+
+        var body = document.getElementById("finalizar");
+        init();
+        finish();
+        body.textContent = "You have successfully completed the exercise";
+        document.getElementById("endButton").style.display = "block";
+    }
+    else{
+        var body = document.getElementById("otro_documento");
+        var boton = document.createElement("INPUT");
+        boton.setAttribute("type","button");
+        boton.setAttribute("value","Next exercise");
+        boton.setAttribute("onclick","location='documento.html'");
+        boton.setAttribute("style","width: 850px; height:40px");
+        body.appendChild(boton);
+    }    
+
+    function stringToInt(array){
+        for(var i = 0; i<array.length; i++){
+            array[i] = parseInt(array[i]);
+        }
+        return array;
+    }
+
+    function suma(array){
+        var total = 0;
+        for(var i = 0; i<array.length; i++){
+            total += array[i];
+        }
+        return total;
+    }
+
+    var nFindAPITries = 0;
+    var API = null;
+    function FindAPI(win) {
+        while ((win.API == null) && (win.parent != null) && (win.parent != win)) {
+            nFindAPITries ++;
+            if (nFindAPITries > 500) {
+                alert("Error in finding API -- too deeply nested.");
+                return null 
+            }
+            win = win.parent
+        }
+        return win.API
+    } 
+    function init() {
+        if ((window.parent) && (window.parent != window)){
+            API = FindAPI(window.parent);
+        } 
+        if ((API == null) && (window.opener != null)){
+            API = FindAPI(window.opener); 
+        } 
+        if (API == null) { 
+            alert("No API adapter found"); 
+        } 
+        else { 
+            API.LMSInitialize(""); 
+        } 
+    }
+    
+    function finish() {
+        var notasDocumentos = localStorage.getItem("notasDocumentos");
+        var notasAlumno = localStorage.getItem("notasAlumno");
+        notasDocumentos = JSON.parse(notasDocumentos);
+        notasAlumno = JSON.parse(notasAlumno);
+        localStorage.clear(); 
+        if (API != null) { 
+            API.LMSSetValue("cmi.core.lesson_status","completed");
+            API.LMSSetValue("cmi.core.score.max",);
+            API.LMSSetValue("cmi.core.score.min",0);
+            API.LMSSetValue("cmi.core.score.raw",reglaDeTres(suma(notasDocumentos),suma(notasAlumno)));
+            API.LMSFinish("");
+        } 
+    }
+
+    function reglaDeTres(num1,num2){
+        return num2*10/num1;
+    }
+
+    window.location.hash = "no-back-button";
+    window.location.hash = "Again-No-back-button";
+    window.onhashchange=function(){window.location.hash="no-back-button";}
+</script>
+</html>

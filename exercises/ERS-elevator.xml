@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <title>Software Requirements Specification: ACME elevator FAMILY model</title>
+    <text>
+
+**1. Introduction**
+
+
+1.1. Purpose: This SRS describes the detailed requirements for the FAMILY model of the ACME elevator.This document has been submitted to Configuration Control and assigned a 1.0 Version number. It is valid for all purposes: Design, system testing, and project management. 
+
+
+1.2. Scope: The FAMILY model is the simplest and cheapest elevator in the product family. This elevator is designed for small family houses (hence the model’s name), which are the most typical family houses in the US. The target customer is a grown-up or handicapped person who cannot use the stairs and needs help to get to the rooms on the upper floor. This elevator complies with all applicable safety regulations and is equipped with doors, an internal light, an alarm, and an emergency phone system. The alarm and the emergency phone system are independent devices; they have particular hardware and software, and therefore they are out of the scope of the current system.  
+
+ 
+1.5. Overview: Sections:
+
+
+1.3. Definitions, acronyms, and abbreviations 
+
+1.4. References 
+
+
+Have been removed due to not being necessary. 
+
+
+2. Overall description 
+
+
+2.1. Product perspective: the FAMILY model is a regular elevator composed of: 
+
+**Cabin with enough space for 4 regular people or a wheelchair. 
+
+Internal (within-cabin) control panel. It contains floor buttons, an alarm, and an emergency phone.  External (wall) control panel. There are panels on the bottom and top floors. They contain call buttons. 
+
+Internal light. **
+
+ 
+2.2. User functions: The only function the user can perform is to move the elevator to the designated floor. 
+
+ 
+
+2.3. User characteristics: FAMILY models must follow the same conventions as regular elevators to ease safety operation. In particular, buttons should be lit when pressed, and doors closed during operation.  
+
+ 
+2.4. Constraints: 
+
+2.5. Assumptions and dependencies: 
+
+2.6. Apportioning: 
+
+ 
+
+3. Specific requirements 
+
+
+3.1. Functional requirements 
+
+
+3.1.1. When an external call button is pressed, the elevator will move to the floor where the button was pressed. 
+
+
+3.1.2. When an internal button is pressed, the elevator will move to the corresponding floor. 
+
+    </text>
+    <Global> Este ejercicio es un ejemplo </Global>
+    <defect type="Completeness" weight="1" comment="There may be other purposes besides the ones enumerated.">It is valid for all purposes: Design, system testing, and project management.</defect>
+    <defect type="Understability" weight="1" comment="The product family has not been defined. The product family may have characteristics that influence the requirements of the FAMILY model.">The FAMILY model is the simplest and cheapest elevator in the product family. </defect>
+    <defect type="Understability" weight="1" comment="The concept of “small family house” has not been defined. The context in which the software is going to operate is key for proper requirements understanding.">This elevator is designed for small family houses (hence the model’s name), which are the most typical family houses in the US.</defect>
+    <defect type="Completeness" weight="1" comment="Which regulations apply?">This elevator complies with all applicable safety regulations </defect>
+    <defect type="Understability" weight="1" comment=" The concept of “regular people” has not been defined. It is unlikely that it influences the software requirements, because it is just a matter of physical space, but it is preferable to double check.">Cabin with enough space for 4 regular people</defect>
+    <defect type="Consistency" weight="1" comment="The buttons have not been enumerated previously in Section 1.2. Section 2 is not required to describe the elevator’s components (Section 2.1 has this responsibility), but if it does, it shall be consistent.">Internal (within-cabin) control panel. It contains floor buttons, an alarm, and an emergency phone.  External (wall) control panel. There are panels on the bottom and top floors. They contain call buttons. </defect>
+    <defect type="Consistency" weight="1" comment="As specified in Section 1.2, the internal light is an independent device, and is out of the scope for the SRS. Therefore, there is no reason to include it in the overall description.">nternal light.</defect>
+    <defect type="Consistency" weight="1" comment="There are two requirements, but this sentence suggest there is just one.">The only function the user can perform is to move the elevator</defect>
+    <defect type="Ambiguity" weight="1" comment="What does “designated floor” really mean? ">designated floor.</defect>
+    <defect type="Completeness" weight="1" comment="These conventions have not been defined.">FAMILY models must follow the same conventions as regular elevators to ease safety operation</defect>
+    <defect type="Ambiguity" weight="1" comment="Which buttons: internal, external or both?">buttons should be lit when pressed,</defect>
+    <defect type="Organization" weight="1" comment="The requirement has not been annotated by priority/stability/version.">3.1.1. When an external call button is pressed, the elevator will move to the floor where the button was pressed. </defect>
+    <defect type="Organization" weight="1" comment=" The requirement has not been annotated by priority/stability/version.">3.1.2. When an internal button is pressed, the elevator will move </defect>
+    <defect type="Ambiguity" weight="1" comment="What does “corresponding floor” really mean?">corresponding floor.</defect>
+</document>
