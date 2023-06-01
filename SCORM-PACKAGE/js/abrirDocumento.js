@@ -62,49 +62,75 @@ function abrirDocumento(URL){
 
 function getConfig() {
     return fetch("https://raw.githubusercontent.com/Vasapg/PIE-SCORM/main/Self-Assesment-4/exercises/config.xml")
-      .then(response => response.text())
-      .then(data => {	
-        var xmlDoc = new DOMParser().parseFromString(data, "text/xml");
-        localStorage.setItem("nEjercicio", 0);
-        localStorage.setItem("maxEjercicio", parseInt(xmlDoc.getElementsByTagName("numExercises")[0].childNodes[0].nodeValue));
-        var titulos = [];
-        var urls = [];
-        
-        // obtiene todas las etiquetas "title" y "url"
-        var titleTags = xmlDoc.getElementsByTagName("title");
-        var urlTags = xmlDoc.getElementsByTagName("url");
-        console.log(titleTags);
-        console.log(urlTags);
-        console.log("bruh");
-        
-        // itera sobre las etiquetas y guarda los contenidos en los arrays
-        for (var i = 0; i < titleTags.length; i++) 
-        {
-          titulos.push(titleTags[i].textContent);
-          urls.push(urlTags[i].textContent);
-        }
-        console.log(titulos);
-        console.log(urls);
-        localStorage.setItem("urls", JSON.stringify(urls));
-        localStorage.setItem("titulos", JSON.stringify(titulos));
-      });
+	.then(response => response.text())
+	.then(data => {
+	  var xmlDoc = new DOMParser().parseFromString(data, "text/xml");
+	  localStorage.setItem("nEjercicio", 0);
+	  localStorage.setItem("maxEjercicio", parseInt(xmlDoc.getElementsByTagName("numExercises")[0].childNodes[0].nodeValue));
+	  var titulos = [];
+	  var urls = [];
+	  
+	  // obtiene todas las etiquetas "title" y "url"
+	  var titleTags = xmlDoc.getElementsByTagName("title");
+	  var urlTags = xmlDoc.getElementsByTagName("url");
+	  console.log(titleTags);
+	  console.log(urlTags);
+	  console.log(xmlDoc);
+	  
+	  // itera sobre las etiquetas y guarda los contenidos en los arrays
+	  for (var i = 0; i < titleTags.length; i++) 
+	  {
+		titulos.push(titleTags[i].textContent);
+		urls.push(urlTags[i].textContent);
+	  }
+	  var desordenados = desordenarArrays(urls, titulos);
+	  urls = desordenados.urls;
+	  titulos = desordenados.titulos;
+	  localStorage.setItem("urls", JSON.stringify(urls));
+	  localStorage.setItem("titulos", JSON.stringify(titulos));
+	});
+}
+
+async function getUrl() {
+  if (!localStorage.getItem("urls")) {
+	await getConfig();
   }
-  
-  async function getUrl() {
-    if (!localStorage.getItem("urls")) {
-      await getConfig();
-    }
-    var nEjercicio = parseInt(localStorage.getItem("nEjercicio"));
-    console.log(nEjercicio);
+  var nEjercicio = parseInt(localStorage.getItem("nEjercicio"));
+  console.log(nEjercicio);
 
-    var url = JSON.parse(localStorage.getItem("urls"));
-    url = url[nEjercicio];
+  var url = JSON.parse(localStorage.getItem("urls"));
+  url = url[nEjercicio];
 
-    abrirDocumento(url);
-    nEjercicio = nEjercicio + 1;
-    localStorage.setItem("nEjercicio", nEjercicio);
+  abrirDocumento(url);
+  nEjercicio = nEjercicio + 1;
+  localStorage.setItem("nEjercicio", nEjercicio);
+}
+
+function desordenarArrays(urls, titulos) {
+  // Verificar que los arrays tengan la misma longitud
+  if (urls.length !== titulos.length) {
+	throw new Error("Los arrays deben tener la misma longitud");
   }
 
+  // Crear un array de índices desordenados
+  var indicesDesordenados = [];
+  for (var i = 0; i < urls.length; i++) {
+	indicesDesordenados.push(i);
+  }
+  indicesDesordenados.sort(() => Math.random() - 0.5); // Desordenar los índices
+
+  // Crear nuevos arrays desordenados
+  var urlsDesordenadas = [];
+  var titulosDesordenados = [];
+  for (var j = 0; j < indicesDesordenados.length; j++) {
+	var indiceActual = indicesDesordenados[j];
+	urlsDesordenadas.push(urls[indiceActual]);
+	titulosDesordenados.push(titulos[indiceActual]);
+  }
+
+  // Devolver los nuevos arrays desordenados
+  return { urls: urlsDesordenadas, titulos: titulosDesordenados };
+}
 
 function comprobarXHTTP() {
 	var xhttp;
